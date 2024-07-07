@@ -36,15 +36,15 @@ html {
 }
 
 .editortabs-container {
-  @apply glassmorphism w-16 border-[2px] rounded-lg flex flex-col justify-center items-center ml-1 py-4 gap-4;
+  @apply fixed z-10 bottom-5 left-0 right-0 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
 .filtertabs-container {
-  @apply absolute z-10 bottom-5 right-0 left-0 w-full flex justify-center items-center flex-wrap gap-4;
+  @apply fixed z-10 top-5 left-0 right-0 w-full flex justify-center items-center flex-wrap gap-4;
 }
 
 .aipicker-container {
-  @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] rounded-md flex flex-col gap-4;
+  @apply fixed z-10 bottom-20 left-4 right-0 flex justify-center items-center glassmorphism p-3 w-[195px] h-[220px] rounded-md flex-col gap-4;
 }
 
 .aipicker-textarea {
@@ -52,7 +52,7 @@ html {
 }
 
 .filepicker-container {
-  @apply absolute left-full ml-3 glassmorphism p-3 w-[195px] h-[220px] flex flex-col rounded-md;
+  @apply fixed z-10 bottom-20 left-4 right-0 flex justify-center items-center glassmorphism p-3 w-[195px] h-[220px] flex-col rounded-md;
 }
 
 .filepicker-label {
@@ -64,7 +64,7 @@ html {
 }
 
 .glassmorphism {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.756);
   box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -78,15 +78,14 @@ input[type="file"] {
 }
 
 .sketch-picker {
-  width: 170px !important;
-  background: rgba(255, 255, 255, 0.25) !important;
+  @apply absolute z-10 bottom-20 left-4 right-0 flex justify-center items-center glassmorphism p-3 w-[194px] h-[240px] flex-col rounded-md;
+  background: rgba(255, 255, 255, 0.655) !important;
   box-shadow: 0 2px 30px 0 rgba(31, 38, 135, 0.07) !important;
   backdrop-filter: blur(4px) !important;
   -webkit-backdrop-filter: blur(4px) !important;
   border: 1px solid rgba(255, 255, 255, 0.18) !important;
   border-radius: 6px !important;
 }
-
 .sketch-picker > div:nth-child(3) {
   display: none !important;
 }
