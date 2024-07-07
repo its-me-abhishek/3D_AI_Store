@@ -5,7 +5,7 @@ import { useSnapshot } from 'valtio';
 import config from '../config/config';
 import state from '../store';
 import { download } from '../assets';
-import { downloadCanvasToImage, reader } from '../config/helpers';
+import { downloadCanvasToImage, getContrastingColor, reader } from '../config/helpers';
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
@@ -135,11 +135,6 @@ const Customizer = () => {
                     >
                         <div className="flex items-center min-h-screen">
                             <div className="editortabs-container tabs">
-                                <select onChange={handleModelChange} value={snap.selectedModel}>
-                                    <option value="Shirt">Shirt</option>
-                                    <option value="Sweatshirt">Sweatshirt</option>
-                                    <option value="Shoe">Shoe</option>
-                                </select>
                                 {EditorTabs.map((tab) => (
                                     <Tab
                                         key={tab.name}
@@ -147,7 +142,6 @@ const Customizer = () => {
                                         handleClick={() => handleEditorTabClick(tab.name)}
                                     />
                                 ))}
-
                                 {generateTabContent()}
                                 <CustomButton
                                     type="filled"
@@ -162,7 +156,33 @@ const Customizer = () => {
                     <motion.div
                         className='filtertabs-container'
                         {...slideAnimation("up")}
-                    >
+                    >   <div style={{ display: 'flex', height: 55, justifyContent: 'center', marginTop: '0' }}>
+                            <select
+                                onChange={handleModelChange}
+                                value={snap.selectedModel}
+                                style={{
+                                    padding: '10px 10px',
+                                    fontSize: '16px',
+                                    borderRadius: '5px',
+                                    border: '2px solid #ccc',
+                                    backgroundColor: snap.color,
+                                    color: getContrastingColor(snap.color),
+                                    outline: 'none',
+                                    transition: 'border-color 0.3s, box-shadow 0.3s',
+                                    cursor: 'pointer',
+                                    width: '80px',
+                                    textAlign: 'center',
+                                }}
+                                onMouseEnter={(e) => e.target.style.borderColor = '#888'}
+                                onMouseLeave={(e) => e.target.style.borderColor = '#ccc'}
+                                onFocus={(e) => e.target.style.boxShadow = '0 0 5px rgba(0, 123, 255, 0.5)'}
+                                onBlur={(e) => e.target.style.boxShadow = 'none'}
+                            >
+                                <option value="Shirt">Shirt</option>
+                                <option value="Sweatshirt">Sweatshirt</option>
+                                <option value="Shoe">Shoe</option>
+                            </select>
+                        </div>
                         {FilterTabs.map((tab) => (
                             <Tab
                                 key={tab.name}
@@ -172,6 +192,7 @@ const Customizer = () => {
                                 handleClick={() => handleActiveFilterTab(tab.name)}
                             />
                         ))}
+
                     </motion.div>
                 </>
             )}
