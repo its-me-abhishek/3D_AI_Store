@@ -120,6 +120,10 @@ const Customizer = () => {
         setActiveEditorTab(prevTab => prevTab === tabName ? "" : tabName);
     }
 
+    const handleModelChange = (event) => {
+        state.selectedModel = event.target.value;
+    };
+
     return (
         <AnimatePresence>
             {!snap.intro && (
@@ -131,6 +135,10 @@ const Customizer = () => {
                     >
                         <div className="flex items-center min-h-screen">
                             <div className="editortabs-container tabs">
+                                <select onChange={handleModelChange} value={snap.selectedModel}>
+                                    <option value="Shirt">Shirt</option>
+                                    <option value="Sweatshirt">Sweatshirt</option>
+                                </select>
                                 {EditorTabs.map((tab) => (
                                     <Tab
                                         key={tab.name}

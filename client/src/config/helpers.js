@@ -14,9 +14,10 @@ export const reader = (file) =>
   new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.onload = () => resolve(fileReader.result);
+    fileReader.onerror = () => reject(new Error("Failed to read file"));
     fileReader.readAsDataURL(file);
   });
-
+  
 export const getContrastingColor = (color) => {
   // Remove the '#' character if it exists
   const hex = color.replace("#", "");
