@@ -7,6 +7,7 @@ import CameraRig from './CameraRig';
 import { useSnapshot } from 'valtio';
 import state from '../store';
 import SweatShirt from './Sweatshirt';
+import Shoe from './Shoe';
 
 const CanvasModel = () => {
   const snap = useSnapshot(state);
@@ -26,6 +27,7 @@ const CanvasModel = () => {
         <Center>
           {snap.selectedModel === 'Shirt' && <Shirt />}
           {snap.selectedModel === 'Sweatshirt' && <SweatShirt />}
+          {snap.selectedModel === 'Shoe' && <Shoe />}
         </Center>
       </CameraRig>
     </Canvas>

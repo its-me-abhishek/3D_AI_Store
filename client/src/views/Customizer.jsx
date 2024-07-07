@@ -138,6 +138,7 @@ const Customizer = () => {
                                 <select onChange={handleModelChange} value={snap.selectedModel}>
                                     <option value="Shirt">Shirt</option>
                                     <option value="Sweatshirt">Sweatshirt</option>
+                                    <option value="Shoe">Shoe</option>
                                 </select>
                                 {EditorTabs.map((tab) => (
                                     <Tab
