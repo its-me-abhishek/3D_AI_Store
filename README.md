@@ -7,6 +7,24 @@ View, design and customize the color and logo of the clothing items in a 3D envi
 - Create unique combinations of colors using the color picker
 - Upload a file or generate a file using AI for using as a logo, or even for an overall texture!
 
+## Screenshots
+**Home Page**
+<img src="./screenshots/01_homepage.png">
+
+**Customization Page**
+- Shirt Model
+<img src="./screenshots/02_customize.png">
+- Sweat Shirt Model
+<img src="./screenshots/03_sweatshirt.png">
+- Shoe Model
+<img src="./screenshots/04_shoe.png">
+
+**Color Picker**
+<img src="./screenshots/05_color.png">
+
+**Logo Picker**
+<img src="./screenshots/06_logo.png">
+
 ### Installation guide
 
 **Clone the Repository**
