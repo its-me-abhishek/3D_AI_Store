@@ -1,4 +1,4 @@
-<h3 align="center">3D AI Store</h3>
+<h2 align="center">3D AI Store</h2>
  
 View, design and customize the color and logo of the clothing items in a 3D environment built by using React.js, Three.js, Node.js and OpenAI API
 
@@ -14,8 +14,10 @@ View, design and customize the color and logo of the clothing items in a 3D envi
 **Customization Page**
 - Shirt Model
 <img src="./screenshots/02_customize.png">
+
 - Sweat Shirt Model
 <img src="./screenshots/03_sweatshirt.png">
+
 - Shoe Model
 <img src="./screenshots/04_shoe.png">
 
