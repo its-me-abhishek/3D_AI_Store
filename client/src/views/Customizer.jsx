@@ -9,6 +9,7 @@ import { downloadCanvasToImage, getContrastingColor, reader } from '../config/he
 import { EditorTabs, FilterTabs, DecalTypes } from '../config/constants';
 import { fadeAnimation, slideAnimation } from '../config/motion';
 import { AIPicker, ColorPicker, CustomButton, FilePicker, Tab } from '../components';
+import Select from 'react-select';
 
 const Customizer = () => {
     const snap = useSnapshot(state);
@@ -108,6 +109,12 @@ const Customizer = () => {
         })
     }
 
+    const options = [
+        { value: "Shirt", label: "Shirt" },
+        { value: "Sweatshirt", label: "Sweatshirt" },
+        { value: "Shoe", label: "Shoe" }
+    ];
+
     const readFile = (type) => {
         reader(file)
             .then((result) => {
@@ -120,8 +127,8 @@ const Customizer = () => {
         setActiveEditorTab(prevTab => prevTab === tabName ? "" : tabName);
     }
 
-    const handleModelChange = (event) => {
-        state.selectedModel = event.target.value;
+    const handleModelChange = (selectedOption) => {
+        state.selectedModel = selectedOption.value;
     };
 
     return (
@@ -157,31 +164,34 @@ const Customizer = () => {
                         className='filtertabs-container'
                         {...slideAnimation("up")}
                     >   <div style={{ display: 'flex', height: 55, justifyContent: 'center', marginTop: '0' }}>
-                            <select
+                            <Select
+                                options={options}
                                 onChange={handleModelChange}
-                                value={snap.selectedModel}
-                                style={{
-                                    padding: '10px 10px',
-                                    fontSize: '16px',
-                                    borderRadius: '5px',
-                                    border: '2px solid #ccc',
-                                    backgroundColor: snap.color,
-                                    color: getContrastingColor(snap.color),
-                                    outline: 'none',
-                                    transition: 'border-color 0.3s, box-shadow 0.3s',
-                                    cursor: 'pointer',
-                                    width: '80px',
-                                    textAlign: 'center',
+                                value={options.find((option) => option.value === snap.selectedModel)}
+                                styles={{
+                                    control: (provided) => ({
+                                        ...provided,
+                                        backgroundColor: snap.color,
+                                        color: getContrastingColor(snap.color),
+                                        border: "2px solid #ccc",
+                                        borderRadius: "5px",
+                                        padding: "5px",
+                                        width: "200px",
+                                        cursor: "pointer",
+                                        transition: "border-color 0.3s, box-shadow 0.3s",
+                                        "&:hover": { borderColor: "#888" },
+                                        "&:focus": { boxShadow: "0 0 5px rgba(0, 123, 255, 0.5)" },
+                                    }),
+                                    singleValue: (provided) => ({
+                                        ...provided,
+                                        color: getContrastingColor(snap.color),
+                                    }),
+                                    menu: (provided) => ({
+                                        ...provided,
+                                        minWidth: "max-content",
+                                    }),
                                 }}
-                                onMouseEnter={(e) => e.target.style.borderColor = '#888'}
-                                onMouseLeave={(e) => e.target.style.borderColor = '#ccc'}
-                                onFocus={(e) => e.target.style.boxShadow = '0 0 5px rgba(0, 123, 255, 0.5)'}
-                                onBlur={(e) => e.target.style.boxShadow = 'none'}
-                            >
-                                <option value="Shirt">Shirt</option>
-                                <option value="Sweatshirt">Sweatshirt</option>
-                                <option value="Shoe">Shoe</option>
-                            </select>
+                            />
                         </div>
                         {FilterTabs.map((tab) => (
                             <Tab
