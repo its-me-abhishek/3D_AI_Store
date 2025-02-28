@@ -33,7 +33,7 @@ const Home = () => {
                             style={{ color: 'white', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)' }}
                         >
                             Welcome to 3D SHOP, where creativity meets technology.
-                            Customize your unique and exclusive t-shirts using our innovative 3D customization tool.
+                            Customize your unique and exclusive clothing items using our innovative 3D customization tool.
                             <br />
                             <strong>Unleash your imagination</strong> and design apparel that stands out from the crowd.
                         </p>
